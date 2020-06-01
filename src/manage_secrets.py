@@ -1,7 +1,5 @@
 import boto3
 
-parameter_name = None
-
 
 def get_value_from_parameter_store(name):
     client = boto3.client('ssm')
