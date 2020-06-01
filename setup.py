@@ -1,7 +1,7 @@
 import os
 from setuptools import find_packages, setup
 
-VERSION = "0.0.1.dev1"
+VERSION = "0.0.1.dev4"
 
 ROOT_PATH = os.path.abspath(os.path.dirname(__file__))
 
@@ -19,7 +19,7 @@ with open("README.md") as f:
 print("Started!")
 
 setup(
-    name='demo',
+    name='demo-python-aws-click',
     version=VERSION,
     description='Demo app for python aws click',
     long_description=long_description,
@@ -39,7 +39,7 @@ setup(
     install_requires=install_requires,
     entry_points='''
         [console_scripts]
-        demo=cli:entrypoint
+        demo=demo.cli:entrypoint
     '''
 )
 
