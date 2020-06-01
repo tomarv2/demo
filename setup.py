@@ -27,16 +27,16 @@ setup(
     author='Varun Tomar',
     author_email='varuntomar2019@gmail.com',
     python_requires=">=3.6",
-    package_dir={"": "src"},
-    packages=find_packages("src"),
+    package_dir={"": "src"}, # all distutils packages are under src
+    packages=find_packages("src"), #  include all packages under src
     url="https://github.com/tomarv2/demo-python-aws-click",
-    classifiers=[  # Optional
+    classifiers=[  # Optional: A list of strings describing the categories for the package.
         'Programming Language :: Python :: 3.6',
         'Operating System :: OS Independent',
     ],
-    setup_requires=['pytest-runner'],
-    tests_require=['pytest'],
-    install_requires=install_requires,
+    # setup_requires=['pytest-runner'], # Using setup_requires is discouraged in favor of PEP-518.
+    tests_require=['pytest'], # If your project’s tests need one or more additional packages besides those needed to install it.
+    install_requires=install_requires, # A string or list of strings specifying what other distributions need to be installed when this one is. 
     entry_points='''
         [console_scripts]
         demo=demo.cli:entrypoint
