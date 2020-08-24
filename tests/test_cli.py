@@ -33,7 +33,7 @@ def test_get_mock_ssm(ssm):
         Tier='Standard',
         DataType='text'
     )
-    from src.cli import entrypoint
+    from src.demo.cli import entrypoint
     runner = CliRunner()
     response = runner.invoke(entrypoint, ["get", "--name", "demo_parameter"])
     assert response.output == "hello world\n"
