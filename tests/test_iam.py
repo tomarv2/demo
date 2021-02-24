@@ -2,7 +2,7 @@ from click.testing import CliRunner
 
 import os
 import boto3
-from moto import mock_ssm
+from moto import mock_iam
 import pytest
 
 
@@ -17,21 +17,17 @@ def aws_credentials():
 
 
 @pytest.fixture(scope='module')
-def ssm(aws_credentials):
-    with mock_ssm():
-        yield boto3.client('ssm')
+def iam(aws_credentials):
+    with mock_iam():
+        yield boto3.client('iam')
 
 
-def test_get_mock_ssm(ssm):
-    # We need to create the ssm entry first since this is all in Moto's 'virtual' AWS account
-    ssm.put_parameter(
-        Name='demo_parameter',
+def test_get_mock_iam(iam):
+    # We need to create the iam entry first since this is all in Moto's 'virtual' AWS account
+    iam.create_role(
+        RoleName='demo_parameter',
         Description='name',
-        Value="hello world",
-        Type='String',
-        Overwrite=True,
-        Tier='Standard',
-        DataType='text'
+        AssumeRolePolicyDocument='/Users/varun.tomar/Documents/databricks_github/prism/app/support/data/demo-role.json'
     )
     from src.demo.cli import entrypoint
     runner = CliRunner()
