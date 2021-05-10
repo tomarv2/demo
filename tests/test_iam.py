@@ -27,7 +27,7 @@ def test_get_mock_iam(iam):
     iam.create_role(
         RoleName='demo_parameter',
         Description='name',
-        AssumeRolePolicyDocument='/Users/varun.tomar/Documents/databricks_github/prism/app/support/data/demo-role.json'
+        AssumeRolePolicyDocument='demo-role.json'
     )
     from src.demo.cli import entrypoint
     runner = CliRunner()
